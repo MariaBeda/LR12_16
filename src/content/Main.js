@@ -5,6 +5,8 @@ import validator from 'validator';
 import Item from "./Item";
 import axios from 'axios'
 
+const apiUrl = "https://beda-143e1.firebaseio.com"; // переменная для ссылки
+
 class Main extends Component {
     state = {
       text: '',
@@ -22,7 +24,7 @@ class Main extends Component {
 
     async componentDidMount() {
         try {
-            const response = await axios.get('https://beda-143e1.firebaseio.com/persons.json');
+            const response = await axios.get(apiUrl+'/persons.json');
             const persons = Object.entries(response.data).map((person) => {
                 return {
                     personId: person[0],
@@ -118,7 +120,7 @@ class Main extends Component {
 
     addPersonBase = async () => {
         try {
-            await axios.post('https://beda-143e1.firebaseio.com/persons.json', {
+            await axios.post(apiUrl+'/persons.json', {
                 firstName: this.state.firstNameAdd,
                 secondName: this.state.secondNameAdd,
                 lastName: this.state.lastNameAdd,

@@ -3,6 +3,8 @@ import {Button, Card, Col, Form, ListGroup, ListGroupItem, Modal} from "react-bo
 import validator from 'validator';
 import axios from 'axios'
 
+const apiUrl = "https://beda-143e1.firebaseio.com"; // переменная для ссылки
+
 class Item extends Component {
     state = {
         showDelete: false,
@@ -17,7 +19,7 @@ class Item extends Component {
     };
     async componentDidMount() {
         try {
-            const response  = await axios.get(`https://beda-143e1.firebaseio.com/persons/${this.props.id}.json`);
+            const response  = await axios.get(`${apiUrl}/persons/${this.props.id}.json`);
             const data = response.data;
             this.setState({
                 firstName: data.firstName,
@@ -73,7 +75,7 @@ class Item extends Component {
     };
     deletePersonBase = async () => {
         try {
-            await axios.delete(`https://beda-143e1.firebaseio.com/persons/${this.props.id}.json`);
+            await axios.delete(`${apiUrl}/persons/${this.props.id}.json`);
             this.setState({showDelete: false});
             window.location.reload();
         } catch (e) {
@@ -82,7 +84,7 @@ class Item extends Component {
     };
     editPersonBase = async () => {
         try {
-            await axios.put(`https://beda-143e1.firebaseio.com/persons/${this.props.id}.json`, {
+            await axios.put(`${apiUrl}/persons/${this.props.id}.json`, {
                 firstName: this.state.firstName,
                 secondName: this.state.secondName,
                 lastName: this.state.lastName,
@@ -117,7 +119,7 @@ class Item extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Удаление сотрудника</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Вы действитель хотите удалить сотрудника <b>{`${this.props.personData.secondName} ${this.props.personData.firstName} ${this.props.personData.lastName}`}</b> ?</Modal.Body>
+                    <Modal.Body>Вы действитель хотите удалить сотрудника<b>{`${this.props.personData.secondName} ${this.props.personData.firstName} ${this.props.personData.lastName}`}</b> ?</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleDeleteClose}>
                             Закрыть
