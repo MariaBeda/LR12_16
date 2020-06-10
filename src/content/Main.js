@@ -159,11 +159,11 @@ class Main extends Component {
                             <Form.Row>
                                 <Form.Group as={Col}>
                                     <Form.Label>Фамилия</Form.Label>
-                                    <Form.Control type="text" placeholder="Мария" onChange={this.addSecondName} />
+                                    <Form.Control type="text" placeholder="Беда" onChange={this.addSecondName} />
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Form.Label>Имя</Form.Label>
-                                    <Form.Control type="text" placeholder="Беда" onChange={this.addFirstName} />
+                                    <Form.Control type="text" placeholder="Мария" onChange={this.addFirstName} />
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Form.Label>Отчество</Form.Label>
