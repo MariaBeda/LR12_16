@@ -117,7 +117,7 @@ class Item extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Удаление сотрудника</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Вы действитель хотите удалить сотрудника?<b>{`${this.props.personData.secondName} ${this.props.personData.firstName} ${this.props.personData.lastName}`}</b> ?</Modal.Body>
+                    <Modal.Body>Вы действитель хотите удалить сотрудника<b>{`${this.props.personData.secondName} ${this.props.personData.firstName} ${this.props.personData.lastName}`}</b> ?</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleDeleteClose}>
                             Закрыть
